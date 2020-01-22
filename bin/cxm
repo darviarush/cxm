@@ -1,0 +1,19 @@
+#!/usr/bin/env perl
+
+use common::sense;
+
+use FindBin;
+use lib "$FindBin::Bin/../lib";
+
+use Getopt::Long;
+
+my %opt;
+my $parse_options_ok = GetOptions(
+    'help|?|h'   => \$opt{help},
+	'global|g'   => \$opt{global},
+);
+
+use App::cxm;
+
+App::cxm->new(args=>\@ARGV, opt=>\%opt)->run;
+
